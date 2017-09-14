@@ -21,7 +21,7 @@ var getone = function(req,res){
 }
 
 var getauthor = function(req,res){
-  Article.findOne({author: req.body.author})
+  Article.findOne({author: req.Headers.author})
   .then(data => {
     res.send(data)
   })

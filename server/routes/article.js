@@ -7,6 +7,6 @@ router.post('/', controllerarticle.create)
 router.get('/:id', controllerarticle.getone)
 router.put('/:id', controllerarticle.update)
 router.delete('/:id', controllerarticle.remove)
-router.get('/:id', controllerarticle.getauthor)
+router.get('/getauthor', controllerarticle.getauthor)
 
 module.exports = router;
