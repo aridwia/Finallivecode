@@ -4,15 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+const mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
+var db = mongoose.connection
+mongoose.connect('mongodb://aridwia:aridwia23@databasebooks-shard-00-00-antnl.mongodb.net:27017,databasebooks-shard-00-01-antnl.mongodb.net:27017,databasebooks-shard-00-02-antnl.mongodb.net:27017/test?ssl=true&replicaSet=databasebooks-shard-0&authSource=admin')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+db.on('error',console.error.bind(console, 'connection error:'))
+db.once('open',function() {
+  console.log(`we're connected`);
+});
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
