@@ -1,2 +1,4 @@
 # Finallivecode
-final live code phase 2
+```Deskripsi
+program ini di buat untuk menyelesaikan tugas di phase 2
+```
