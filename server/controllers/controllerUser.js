@@ -26,20 +26,23 @@ var signup = function(req,res) {
 var authentikasiUser = function(req,res) {
   User.findOne({username:req.body.username}, function(err, user){
     if(user){
-      bcrypt.compareSync(req.body.password,user.password)
-      .then(result =>
+      bcrypt.compare(req.body.password,user.password)
+      .then(result => {
         if(result){
           var token = jwt.sign({
             username: user.name,
             id: user._id,
           },process.env.DB_USER)
-          res.send({ini token: token},{msg: 'login sukses'})
+          res.send({initoken: token,msg: 'login sukses'})
         } else {
-          res.send('salah password')
+          res.send('salah username atau password')
         }
-      )
+      })
+      .catch(err => {
+        res.send(err)
+      })
     }
   })
 }
 
-module.exports = {getall,signup};
+module.exports = {getall,signup,authentikasiUser};
