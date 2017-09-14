@@ -24,7 +24,7 @@ run dev
 ## Api End Point
 
 Route | Description
----|---|---
+---|---|
 /articles | get all articles
 /articles/:id | get one articles
 /articles/category | get articles with same category
