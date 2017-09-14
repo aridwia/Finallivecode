@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var article = require('./routes/article');
+
 var app = express();
 var db = mongoose.connection
 mongoose.connect('mongodb://aridwia:aridwia23@databasebooks-shard-00-00-antnl.mongodb.net:27017,databasebooks-shard-00-01-antnl.mongodb.net:27017,databasebooks-shard-00-02-antnl.mongodb.net:27017/test?ssl=true&replicaSet=databasebooks-shard-0&authSource=admin')
@@ -30,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/article', article);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
